@@ -1,0 +1,1 @@
+celery -A inventory_management worker -l info
