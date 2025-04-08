@@ -70,14 +70,11 @@ WSGI_APPLICATION = 'inventory_management.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME','freelance_db'),
-        'USER': os.getenv('DB_NAME','freelance_user'),
-        'PASSWORD': os.getenv('DB_PASSWORD','freelance123'),
+        'NAME': os.getenv('DB_NAME','inventory_db'),
+        'USER': os.getenv('DB_NAME','inventory_user'),
+        'PASSWORD': os.getenv('DB_NAME','inventory123'),
         'HOST': os.getenv('DB_HOST','localhost'),
         'PORT': os.getenv('DB_PORT','5432'),
-        'OPTIONS': {
-            'options':'-c search_path=inventory',
-        }
     }
 }
 
@@ -138,9 +135,9 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
-REDIS_URL = os.getenv('REDIS_URL','redis://localhost:6379/0')
-CELERY_BROKER_URL = REDIS_URL
-CELERY_RESULT_BACKEND = REDIS_URL
+CELERY_URL = os.getenv('CELERY_URL','redis://localhost:6379/0')
+CELERY_BROKER_URL = CELERY_URL
+CELERY_RESULT_BACKEND = CELERY_URL
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
